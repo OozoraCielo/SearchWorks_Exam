@@ -20,10 +20,6 @@
 	//tailwind css
 	const navtext_lg = 'mx-6 text-white text-[15px] font-dmsans';
 	const navtext_sm = 'mx-2 text-white text-[10px] font-dmsans';
-
-	//get current route; to be used for knowing which link is active
-	import { page } from '$app/stores';
-	$: currentRoute = $page.url.pathname;
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -68,27 +64,24 @@
 				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Nav Link</h1>
 			</a>
 
-			{#if $authStore.currentUser}
-			<button class={`hover:brightness-75`} on:click={() => showAddProperty = true}>
-				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Add Property</h1>
-			</button>
+			{#if !$authStore.currentUser}
+				<a href="/" class={`hover:brightness-75`}>
+					<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Nav Link</h1>
+				</a>
+
+				<button class={`hover:brightness-75`} on:click={() => (showLogin = true)}>
+					<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Login</h1>
+				</button>
 			{:else}
-			<a href="/" class={`hover:brightness-75`}>
-				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Nav Link</h1>
-			</a>
+				<button class={`hover:brightness-75`} on:click={() => (showAddProperty = true)}>
+					<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Add Property</h1>
+				</button>
+
+				<button class={`hover:brightness-75`} on:click={authHandlers.logout}>
+					<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Logout</h1>
+				</button>
 			{/if}
 
-			{#if !$authStore.currentUser}
-			<button class={`hover:brightness-75`} on:click={() => showLogin = true}>
-				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Login</h1>
-			</button>
-			{:else}
-			<button class={`hover:brightness-75`} on:click={authHandlers.logout}>
-				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Logout</h1>
-			</button>
-			{/if}
-			
-			
 			{#if innerWidth >= 1100}
 				<a href="/" class={`hover:brightness-75`}>
 					<div
@@ -111,6 +104,8 @@
 	</ul>
 </div>
 
-<Login show={showLogin} on:close={handleClose}/>
+<!-- show following popup if their value is true -->
 
-<AddProperty showAddProperty={showAddProperty} on:close={handleCloseAddProperty}/>
+<Login show={showLogin} on:close={handleClose} />
+
+<AddProperty {showAddProperty} on:close={handleCloseAddProperty} />

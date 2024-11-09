@@ -59,35 +59,6 @@
 		}
 	}
 
-	// async function handleAuthenticate() {
-    //     error = false;
-	// 	if (authenticating) {
-	// 		return;
-	// 	}
-
-	// 	if (!email || !password || (!loginForm && (!confirmPassword || password !== confirmPassword))) {
-	// 		error = true;
-	// 		console.log(error);
-	// 		return;
-	// 	}
-	// 	authenticating = true;
-
-	// 	try {
-	// 		if (loginForm) {
-	// 			await authHandlers.login(email, password);
-    //             close();
-    //             authenticating = false;
-	// 		} else {
-	// 			await authHandlers.signup(email, password);
-    //             close();
-    //             authenticating = false;
-	// 		}
-	// 	} catch (err) {
-	// 		console.log('there was an auth error', err);
-	// 		error = true;
-    //         authenticating = false;
-	// 	}
-	// }
 </script>
 
 {#if show}
@@ -178,11 +149,6 @@
 					</p>
 				{/if}
 
-				<!-- <input
-					type="text"
-					placeholder="username"
-					class="mt-6 rounded-lg text-[17px] h-[35px] p-2 font-dmsans border-2"
-				/> -->
                 <form>
 				<input
 					type="email"

@@ -1,16 +1,26 @@
+<!-- landing Page -->
 <script>
 	import { onMount } from 'svelte';
-	import { property, properties, getProperty, getAllProperties, loading, getAllPropertiesExceptSelected, getAllPropertiesFiltered } from '../store/store';
+	import {
+		property,
+		properties,
+		getProperty,
+		getAllProperties,
+		loading,
+		getAllPropertiesExceptSelected,
+		getAllPropertiesFiltered
+	} from '../store/store';
 	import Navbar from '../components/navbar.svelte';
-	import Saos from "saos";
+	import Saos from 'saos';
 
 	//get screen size
 	$: innerWidth = 1000;
 	$: innerHeight = 1000;
 
+	//filter options
 	const locationItems = ['All Locations', 'Pampanga', 'Bulacan', 'Manila', 'Quezon', 'Cebu'];
 	const typeItems = ['All Types', 'House', 'Mansion', 'Apartment', 'Condominium'];
-	const priceItems = [ 
+	const priceItems = [
 		'Any Price',
 		[1000, 4999],
 		[5000, 24999],
@@ -19,6 +29,7 @@
 		500000
 	];
 
+	//value of filter options
 	let searchFilter = '';
 	let locationFilter = 'All Locations';
 	let typeFilter = 'All Types';
@@ -28,7 +39,6 @@
 	onMount(() => {
 		loading.set(true);
 		getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
-		console.log($properties);
 	});
 </script>
 
@@ -77,59 +87,57 @@
 </div>
 
 <!--youre in good hands 1-->
-<Saos animation={"from-left 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both"} >
-<div
-	class={`min-w-[100%] bg-white flex pt-[100px]   ${innerWidth > 1100 ? '' : 'flex-col pb-[100px]'}`} 
->
-
-	<img
-		src="./work_together.jpg"
-		alt="house"
-		class={`rounded-tr-[40px] shadow1 object-cover ${innerWidth > 1100 ? '-mb-[100px] w-[50%] h-[700px]' : 'w-[90%] h-[500px]'}`}
-	/>
+<Saos animation={'from-left 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both'}>
 	<div
-		class={` ${innerWidth > 1100 ? 'ml-auto mr-[15%] mt-[100px] w-[31%] pb-[100px]' : 'w-[70%] mx-[15%] mt-[100px]'}`}
+		class={`min-w-[100%] bg-white flex pt-[100px]   ${innerWidth > 1100 ? '' : 'flex-col pb-[100px]'}`}
 	>
-		<div class="h-1 w-[169px] bg-gradient-to-r from-yellow-500 to-black rounded-sm"></div>
-		<h1 class={`mt-4  font-dmsans font-bold ${innerWidth > 1100 ? 'text-[50px]' : 'text-[30px]'}`}>
-			You're in good hands
-		</h1>
-		<p
-			class={`mt-4  font-dmsans opacity-70 ${innerWidth > 1100 ? 'text-[20px] w-[100%]' : 'text-[10px]'}`}
+		<img
+			src="./work_together.jpg"
+			alt="house"
+			class={`rounded-tr-[40px] shadow1 object-cover ${innerWidth > 1100 ? '-mb-[100px] w-[50%] h-[700px]' : 'w-[90%] h-[500px]'}`}
+		/>
+		<div
+			class={` ${innerWidth > 1100 ? 'ml-auto mr-[15%] mt-[100px] w-[31%] pb-[100px]' : 'w-[70%] mx-[15%] mt-[100px]'}`}
 		>
-			jhasgfj sdjhafbjksagfsa hjsadfjdskjfias jhagfigasddkfiasd jhsagfhkasgdifgs jafhgasgfis
-			hagfigsaifgsd hasuhgfiadsgifgdsa augfisagifgasd sagfiusadgi segfuiasgfuas uiasgfigasif
-			asugfisadgifgsa asugfasgfigsa ayugfiouasgfigs augfsagigfs gasugfiasgfiesgh augfiaesgfiagsif
-			auigsigaisfdagfa iuagfiosgifgisag agfsiagfidsgag
-		</p>
-		<div class={` ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}>
-			<a href="/" class="hover:opacity-80">
-				<div
-					class={`mt-6 bg-black rounded-tr-[20px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}
-				>
-					<h1
-						class={`text-white  font-dmsans ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
+			<div class="h-1 w-[169px] bg-gradient-to-r from-yellow-500 to-black rounded-sm"></div>
+			<h1
+				class={`mt-4  font-dmsans font-bold ${innerWidth > 1100 ? 'text-[50px]' : 'text-[30px]'}`}
+			>
+				You're in good hands
+			</h1>
+			<p
+				class={`mt-4  font-dmsans opacity-70 ${innerWidth > 1100 ? 'text-[20px] w-[100%]' : 'text-[10px]'}`}
+			>
+				jhasgfj sdjhafbjksagfsa hjsadfjdskjfias jhagfigasddkfiasd jhsagfhkasgdifgs jafhgasgfis
+				hagfigsaifgsd hasuhgfiadsgifgdsa augfisagifgasd sagfiusadgi segfuiasgfuas uiasgfigasif
+				asugfisadgifgsa asugfasgfigsa ayugfiouasgfigs augfsagigfs gasugfiasgfiesgh augfiaesgfiagsif
+				auigsigaisfdagfa iuagfiosgifgisag agfsiagfidsgag
+			</p>
+			<div class={` ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}>
+				<a href="/" class="hover:opacity-80">
+					<div
+						class={`mt-6 bg-black rounded-tr-[20px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}
 					>
-						Learn more
-					</h1>
-					<h1
-						class={`font-dmsans text-yellow-500 ${innerWidth > 1100 ? 'text-[30px] ml-2 mb-1' : 'text-[15px] ml-1 mb-1'}`}
-					>
-						&rarr;
-					</h1>
-				</div>
-			</a>
+						<h1
+							class={`text-white  font-dmsans ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
+						>
+							Learn more
+						</h1>
+						<h1
+							class={`font-dmsans text-yellow-500 ${innerWidth > 1100 ? 'text-[30px] ml-2 mb-1' : 'text-[15px] ml-1 mb-1'}`}
+						>
+							&rarr;
+						</h1>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
-
-</div>
 </Saos>
-
 
 <!--property list-->
 
-<div class="min-w-[100%] bg-gray-200 min-h-auto" id="propertyList" >
-	
+<div class="min-w-[100%] bg-gray-200 min-h-auto" id="propertyList">
 	<div
 		class={`mx-auto w-[70%] px-2  ${innerWidth > 1100 ? 'pt-[200px] pb-[200px]' : 'pt-[100px] pb-[100px]'}`}
 	>
@@ -147,30 +155,44 @@
 					<div
 						class={`flex items-center bg-white  ${innerWidth > 1100 ? 'w-[25%] h-[100%] rounded-tl-2xl rounded-bl-2xl' : 'h-[25%] w-[100%] rounded-tl-2xl rounded-tr-2xl'}`}
 					>
-					<input type="text" id="searchSelect"
-					class={`h-[80%] w-[80%] max-h-[40px] my-4 mx-8 pl-3 rounded-lg bg-white border-gray-200 border-[1px] flex items-center ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`} placeholder="Search..."
-					on:keyup={() => {
-						searchFilter = document.getElementById("searchSelect").value;
-						getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
-						}}	>
+						<input
+							type="text"
+							id="searchSelect"
+							class={`h-[80%] w-[80%] max-h-[40px] my-4 mx-8 pl-3 rounded-lg bg-white border-gray-200 border-[1px] flex items-center ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
+							placeholder="Search..."
+							on:keyup={() => {
+								searchFilter = document.getElementById('searchSelect').value;
+								getAllPropertiesFiltered(
+									searchFilter,
+									locationFilter,
+									typeFilter,
+									priceFilter,
+									showAll
+								);
+							}}
+						/>
 					</div>
 					<div
 						class={`bg-gray-200 ${innerWidth > 1100 ? 'h-[100%] w-[1px]' : 'h-[1px] w-[100%]'}`}
 					></div>
 
 					<select
-					id="locationSelect"
+						id="locationSelect"
 						class={`flex items-center px-8 bg-white font-dmsans text-black ${innerWidth > 1100 ? 'w-[25%] h-[100%] text-[17px]' : 'h-[25%] w-[100%] text-[10px]'} hover:brightness-90`}
-					
 						on:change={() => {
-							locationFilter = document.getElementById("locationSelect").value;
-							getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
-							}}	>
-					{#each locationItems as item}
-					<option value={item} class=""
-						>{item}</option
+							locationFilter = document.getElementById('locationSelect').value;
+							getAllPropertiesFiltered(
+								searchFilter,
+								locationFilter,
+								typeFilter,
+								priceFilter,
+								showAll
+							);
+						}}
 					>
-				{/each}
+						{#each locationItems as item}
+							<option value={item} class="">{item}</option>
+						{/each}
 					</select>
 
 					<div
@@ -178,55 +200,70 @@
 					></div>
 
 					<select
-					id="typeSelect"
+						id="typeSelect"
 						class={`flex items-center px-8 bg-white font-dmsans text-black ${innerWidth > 1100 ? 'w-[25%] h-[100%] text-[17px]' : 'h-[25%] w-[100%] text-[10px]'} hover:brightness-90`}
 						on:change={() => {
-							typeFilter = document.getElementById("typeSelect").value;
-							getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
-							}}>
+							typeFilter = document.getElementById('typeSelect').value;
+							getAllPropertiesFiltered(
+								searchFilter,
+								locationFilter,
+								typeFilter,
+								priceFilter,
+								showAll
+							);
+						}}
+					>
 						{#each typeItems as item}
-							<option value={item} class=""
-								>{item}</option
-							>
+							<option value={item} class="">{item}</option>
 						{/each}
 					</select>
 					<div
 						class={`bg-gray-200 ${innerWidth > 1100 ? 'h-[100%] w-[1px]' : 'h-[1px] w-[100%]'}`}
 					></div>
 
-
 					<select
-					id="priceSelect"
+						id="priceSelect"
 						class={`flex items-center px-8 bg-white font-dmsans text-black ${innerWidth > 1100 ? 'w-[25%] h-[100%] rounded-tr-2xl rounded-br-2xl text-[17px]' : 'h-[25%] w-[100%] rounded-bl-2xl rounded-br-2xl text-[10px]'} hover:brightness-90`}
 						on:change={() => {
-							priceFilter = document.getElementById("priceSelect").value;
-							getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
-							}}>
-					{#each priceItems as item}
-					<option value={item} class="">
-						{#if item == "Any Price"}
-						{item}
-						{:else if item.length == 2}
-						{item[0]} to {item[1]}
-						{:else}
-						> {item}
-						{/if}
-						</option
+							priceFilter = document.getElementById('priceSelect').value;
+							getAllPropertiesFiltered(
+								searchFilter,
+								locationFilter,
+								typeFilter,
+								priceFilter,
+								showAll
+							);
+						}}
 					>
-				{/each}
+						{#each priceItems as item}
+							<option value={item} class="">
+								{#if item == 'Any Price'}
+									{item}
+								{:else if item.length == 2}
+									{item[0]} to {item[1]}
+								{:else}
+									> {item}
+								{/if}
+							</option>
+						{/each}
 					</select>
 				</li>
 			</ul>
 		</div>
 		<div class="w-[150px] flex mt-4 h-[60px] mx-auto bg-white rounded-2xl items-center">
-			<input type="checkbox" id="showAll" class={`mx-4 w-[30px] h-[30px] ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`} 
-			on:change={() => {
-				showAll = !showAll;
-				console.log(showAll);
-				getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
+			<input
+				type="checkbox"
+				id="showAll"
+				class={`mx-4 w-[30px] h-[30px] ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
+				on:change={() => {
+					showAll = !showAll;
+					console.log(showAll);
+					getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
 				}}
-				>
-			<label for="showAll" class={`${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}>Show All Properties</label><br>
+			/>
+			<label for="showAll" class={`${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
+				>Show All Properties</label
+			><br />
 		</div>
 		<div class="w-[100%] flex flex-wrap mt-8">
 			{#each $properties as property}
@@ -274,91 +311,97 @@
 	</div>
 </div>
 
-
 <!--youre in good hands 2-->
-<Saos animation={"from-right 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both"} >
-<div class={`min-w-[100%] bg-white flex ${innerWidth > 1100 ? '' : 'flex-col'}`}>
-	<div
-		class={` ${innerWidth > 1100 ? 'mr-auto ml-[15%] mt-[150px] w-[31%]' : 'w-[70%] mx-[15%] mb-[50px]  pt-[100px]'}`}
-	>
-		<div class="h-1 w-[169px] bg-gradient-to-r from-yellow-500 to-black rounded-sm"></div>
-		<h1 class={`mt-4  font-dmsans font-bold ${innerWidth > 1100 ? 'text-[50px]' : 'text-[30px]'}`}>
-			You're in good hands
-		</h1>
-		<p
-			class={`mt-4 font-dmsans opacity-70 ${innerWidth > 1100 ? 'text-[20px] w-[100%]' : 'text-[10px]'}`}
+<Saos animation={'from-right 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both'}>
+	<div class={`min-w-[100%] bg-white flex ${innerWidth > 1100 ? '' : 'flex-col'}`}>
+		<div
+			class={` ${innerWidth > 1100 ? 'mr-auto ml-[15%] mt-[150px] w-[31%]' : 'w-[70%] mx-[15%] mb-[50px]  pt-[100px]'}`}
 		>
-			jhasgfj sdjhafbjksagfsa hjsadfjdskjfias jhagfigasddkfiasd jhsagfhkasgdifgs jafhgasgfis
-			hagfigsaifgsd hasuhgfiadsgifgdsa augfisagifgasd sagfiusadgi segfuiasgfuas uiasgfigasif
-			asugfisadgifgsa asugfasgfigsa ayugfiouasgfigs augfsagigfs gasugfiasgfiesgh augfiaesgfiagsif
-			auigsigaisfdagfa iuagfiosgifgisag agfsiagfidsgag
-		</p>
-		<div class={` ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}>
-			<a href="/" class="hover:opacity-80">
-				<div
-					class={`mt-6 bg-black rounded-tr-[20px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}
-				>
-					<h1
-						class={`text-white  font-dmsans ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
+			<div class="h-1 w-[169px] bg-gradient-to-r from-yellow-500 to-black rounded-sm"></div>
+			<h1
+				class={`mt-4  font-dmsans font-bold ${innerWidth > 1100 ? 'text-[50px]' : 'text-[30px]'}`}
+			>
+				You're in good hands
+			</h1>
+			<p
+				class={`mt-4 font-dmsans opacity-70 ${innerWidth > 1100 ? 'text-[20px] w-[100%]' : 'text-[10px]'}`}
+			>
+				jhasgfj sdjhafbjksagfsa hjsadfjdskjfias jhagfigasddkfiasd jhsagfhkasgdifgs jafhgasgfis
+				hagfigsaifgsd hasuhgfiadsgifgdsa augfisagifgasd sagfiusadgi segfuiasgfuas uiasgfigasif
+				asugfisadgifgsa asugfasgfigsa ayugfiouasgfigs augfsagigfs gasugfiasgfiesgh augfiaesgfiagsif
+				auigsigaisfdagfa iuagfiosgifgisag agfsiagfidsgag
+			</p>
+			<div class={` ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}>
+				<a href="/" class="hover:opacity-80">
+					<div
+						class={`mt-6 bg-black rounded-tr-[20px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[70px] w-[210px]' : 'h-[30px] w-[100px]'}`}
 					>
-						Learn more
-					</h1>
-					<h1
-						class={`font-dmsans text-yellow-500 ${innerWidth > 1100 ? 'text-[30px] ml-2 mb-1' : 'text-[15px] ml-1 mb-1'}`}
-					>
-						&rarr;
-					</h1>
-				</div>
-			</a>
+						<h1
+							class={`text-white  font-dmsans ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
+						>
+							Learn more
+						</h1>
+						<h1
+							class={`font-dmsans text-yellow-500 ${innerWidth > 1100 ? 'text-[30px] ml-2 mb-1' : 'text-[15px] ml-1 mb-1'}`}
+						>
+							&rarr;
+						</h1>
+					</div>
+				</a>
+			</div>
 		</div>
+		<img
+			src="./work_together.jpg"
+			alt="house"
+			class={`rounded-tl-[40px] shadow2 object-cover ${innerWidth > 1100 ? '-mt-[100px] w-[50%] h-[700px]' : 'w-[90%] ml-auto h-[500px]'}`}
+		/>
 	</div>
-	<img
-		src="./work_together.jpg"
-		alt="house"
-		class={`rounded-tl-[40px] shadow2 object-cover ${innerWidth > 1100 ? '-mt-[100px] w-[50%] h-[700px]' : 'w-[90%] ml-auto h-[500px]'}`}
-	/>
-</div>
 </Saos>
 
 <!--youre in good hands 3-->
 <div
 	class={`w-[100%] bg-gradient bg-gradient-to-tr from-black to-yellow-950  flex flex-col items-center ${innerWidth > 1100 ? 'mt-[200px] py-[150px]' : 'mt-[100px] py-[100px]'}`}
 >
-<Saos class={`w-[100%] flex flex-col items-center justify-center`} animation={"fade 1s linear both"} >
-	<div
-		class="h-1 w-[169px] bg-gradient-to-r from-yellow-500 via-transparent to-transparent rounded-sm mx-auto"
-	></div>
-
-	<h1
-		class={`mt-4 font-dmsans font-bold text-white text-center mx-auto ${innerWidth > 1100 ? 'text-[50px]' : 'text-[30px]'}`}
+	<Saos
+		class={`w-[100%] flex flex-col items-center justify-center`}
+		animation={'fade 1s linear both'}
 	>
-		You're in good hands
-	</h1>
-	<p
-		class={`mt-4 w-[70%] font-dmsans leading-[28px] opacity-70 text-white text-center mx-auto ${innerWidth > 1100 ? 'text-[20px]' : 'text-[10px]'}`}
-	>
-		jhasgfj sdjhafbjksagfsa hjsadfjdskjfias jhagfigasddkfiasd jhsagfhkasgdifgs jafhgasgfis
-		hagfigsaifgsd hasuhgfiadsgifgdsa augfisagifgasd sagfiusadgi segfuiasgfuas uiasgfigasif
-		asugfisadgifgsa asugfasgfigsa ayugfiouasgfigs augfsagigfs gasugfiasgfiesgh augfiaesgfiagsif
-		auigsigaisfdagfa iuagfiosgifgisag agfsiagfidsgag
-	</p>
-	<div class={`mx-auto mt-8 ${innerWidth > 1100 ? 'h-[70px] w-[210px] ' : 'h-[30px] w-[100px] '}`}>
-	<a href="/#" class={`hover:brightness-75 mx-auto `}>
 		<div
-			class={`bg-yellow-600 rounded-tr-[10px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[70px] w-[210px] ' : 'h-[30px] w-[100px] '}`}
+			class="h-1 w-[169px] bg-gradient-to-r from-yellow-500 via-transparent to-transparent rounded-sm mx-auto"
+		></div>
+
+		<h1
+			class={`mt-4 font-dmsans font-bold text-white text-center mx-auto ${innerWidth > 1100 ? 'text-[50px]' : 'text-[30px]'}`}
 		>
-			<h1 class={`text-black font-dmsans ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}>
-				Learn more
-			</h1>
-			<h1
-				class={`font-dmsans text-white ${innerWidth > 1100 ? 'text-[30px] ml-2 mb-1' : 'text-[15px] ml-1 mb-1'}`}
-			>
-				&rarr;
-			</h1>
+			You're in good hands
+		</h1>
+		<p
+			class={`mt-4 w-[70%] font-dmsans leading-[28px] opacity-70 text-white text-center mx-auto ${innerWidth > 1100 ? 'text-[20px]' : 'text-[10px]'}`}
+		>
+			jhasgfj sdjhafbjksagfsa hjsadfjdskjfias jhagfigasddkfiasd jhsagfhkasgdifgs jafhgasgfis
+			hagfigsaifgsd hasuhgfiadsgifgdsa augfisagifgasd sagfiusadgi segfuiasgfuas uiasgfigasif
+			asugfisadgifgsa asugfasgfigsa ayugfiouasgfigs augfsagigfs gasugfiasgfiesgh augfiaesgfiagsif
+			auigsigaisfdagfa iuagfiosgifgisag agfsiagfidsgag
+		</p>
+		<div
+			class={`mx-auto mt-8 ${innerWidth > 1100 ? 'h-[70px] w-[210px] ' : 'h-[30px] w-[100px] '}`}
+		>
+			<a href="/#" class={`hover:brightness-75 mx-auto `}>
+				<div
+					class={`bg-yellow-600 rounded-tr-[10px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[70px] w-[210px] ' : 'h-[30px] w-[100px] '}`}
+				>
+					<h1 class={`text-black font-dmsans ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}>
+						Learn more
+					</h1>
+					<h1
+						class={`font-dmsans text-white ${innerWidth > 1100 ? 'text-[30px] ml-2 mb-1' : 'text-[15px] ml-1 mb-1'}`}
+					>
+						&rarr;
+					</h1>
+				</div>
+			</a>
 		</div>
-	</a>
-</div>
-</Saos>
+	</Saos>
 </div>
 
 <!--people quoutes-->
@@ -448,37 +491,35 @@
 	.low-z {
 		z-index: -2;
 	}
-	select:focus{
+	select:focus {
 		border: thin solid gray;
-		
 	}
 	@keyframes -global-from-left {
-  0% {
-    transform: rotateX(50deg) translateX(-200vw) skewX(-50deg);
-    opacity: 0;
-  }
-  100% {
-    transform: rotateX(0deg) translateX(0) skewX(0deg);
-    opacity: 1;
-  }
-}
-@keyframes -global-from-right {
-  0% {
-    transform: rotateX(50deg) translateX(200vw) skewX(50deg);
-    opacity: 0;
-  }
-  100% {
-    transform: rotateX(0deg) translateX(0) skewX(0deg);
-    opacity: 1;
-  }
-}
-@keyframes -global-fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-	
+		0% {
+			transform: rotateX(50deg) translateX(-200vw) skewX(-50deg);
+			opacity: 0;
+		}
+		100% {
+			transform: rotateX(0deg) translateX(0) skewX(0deg);
+			opacity: 1;
+		}
+	}
+	@keyframes -global-from-right {
+		0% {
+			transform: rotateX(50deg) translateX(200vw) skewX(50deg);
+			opacity: 0;
+		}
+		100% {
+			transform: rotateX(0deg) translateX(0) skewX(0deg);
+			opacity: 1;
+		}
+	}
+	@keyframes -global-fade {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 </style>

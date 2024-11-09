@@ -8,6 +8,7 @@
 
 <div class="w-[100%] pt-[50px] pb-[100px] bg-gradient-to-tr from-black via-black to-yellow-950">
 	<div class="w-[70%] flex mx-auto">
+		<!-- upper part  -->
 		<div class="flex items-center justify-center">
 			<h1
 				class={`text-white font-dmsans font-bold ${innerWidth > 1100 ? 'text-[42px]' : 'text-[20px]'}`}
@@ -36,6 +37,8 @@
 	</div>
 
 	<div class="w-[70%] mx-auto mt-[50px] h-[1px] bg-gray-500"></div>
+
+	<!-- lower part -->
 
 	<div class={`w-[70%] flex mx-auto mt-[50px] ${innerWidth > 1100 ? '' : 'flex-col items-center'}`}>
 		<div class={`flex flex-col ${innerWidth > 1100 ? 'w-[40%]' : ''}`}>

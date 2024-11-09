@@ -12,8 +12,8 @@
 	import LoadingScreen from '../components/loadingScreen.svelte';
 	import { fade } from 'svelte/transition';
 
-
 	onMount(() => {
+		//for login
 		const unsubscribe = auth.onAuthStateChanged((user) => {
 			authStore.update((curr) => {
 				return { ...curr, isLoading: false, currentUser: user };
@@ -24,6 +24,7 @@
 		});
 </script>
 
+<!-- every time something is loading, refreshing, or initial query -> display a loading screen -->
 {#if $loading}
 <div out:fade>
 <LoadingScreen></LoadingScreen>
