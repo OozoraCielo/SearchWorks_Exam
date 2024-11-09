@@ -79,7 +79,7 @@
 <!--youre in good hands 1-->
 <Saos animation={"from-left 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both"} >
 <div
-	class={`min-w-[100%] bg-white flex pt-[100px] pb-[100px]  ${innerWidth > 1100 ? '' : 'flex-col'}`} 
+	class={`min-w-[100%] bg-white flex pt-[100px]   ${innerWidth > 1100 ? '' : 'flex-col pb-[100px]'}`} 
 >
 
 	<img
@@ -128,10 +128,10 @@
 
 <!--property list-->
 
-<div class="min-w-[100%] bg-gray-200 min-h-auto mt-[100px]" id="propertyList" >
+<div class="min-w-[100%] bg-gray-200 min-h-auto" id="propertyList" >
 	
 	<div
-		class={`mx-auto w-[70%]  ${innerWidth > 1100 ? 'pt-[200px] pb-[200px]' : 'pt-[100px] pb-[100px]'}`}
+		class={`mx-auto w-[70%] px-2  ${innerWidth > 1100 ? 'pt-[200px] pb-[200px]' : 'pt-[100px] pb-[100px]'}`}
 	>
 		<div class="h-1 w-[169px] bg-gradient-to-r from-yellow-500 to-black rounded-sm"></div>
 		<h1 class={`mt-4 font-dmsans font-bold ${innerWidth > 1100 ? 'text-[50px]' : 'text-[30px]'}`}>
