@@ -1,10 +1,16 @@
 <script>
 	import Login from '../components/login.svelte';
+	import AddProperty from '../components/addProperty.svelte';
 	import { authHandlers, authStore } from '../store/store';
 
 	let showLogin = false;
 	const handleClose = () => {
 		showLogin = false;
+	};
+
+	let showAddProperty = false;
+	const handleCloseAddProperty = () => {
+		showAddProperty = false;
 	};
 
 	//get screen size
@@ -32,7 +38,7 @@
 			</a>
 
 			{#if innerWidth < 1100}
-				<a href="/floor1" class={`hover:brightness-75`}>
+				<a href="/" class={`hover:brightness-75`}>
 					<div
 						class={` bg-yellow-600  rounded-tr-[10px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[50px] w-[210px] ml-8' : 'h-[25px] w-[100px] ml-3'}`}
 					>
@@ -58,13 +64,19 @@
 				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Nav Link</h1>
 			</a>
 
-			<a href="/floor1" class={`hover:brightness-75`}>
+			<a href="/" class={`hover:brightness-75`}>
 				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Nav Link</h1>
 			</a>
 
-			<a href="/floor1" class={`hover:brightness-75`}>
+			{#if $authStore.currentUser}
+			<button class={`hover:brightness-75`} on:click={() => showAddProperty = true}>
+				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Add Property</h1>
+			</button>
+			{:else}
+			<a href="/" class={`hover:brightness-75`}>
 				<h1 class={`${innerWidth > 1100 ? navtext_lg : navtext_sm}`}>Nav Link</h1>
 			</a>
+			{/if}
 
 			{#if !$authStore.currentUser}
 			<button class={`hover:brightness-75`} on:click={() => showLogin = true}>
@@ -78,7 +90,7 @@
 			
 			
 			{#if innerWidth >= 1100}
-				<a href="/floor1" class={`hover:brightness-75`}>
+				<a href="/" class={`hover:brightness-75`}>
 					<div
 						class={` bg-yellow-600  rounded-tr-[10px] flex items-center justify-center ${innerWidth > 1100 ? 'h-[50px] w-[210px] ml-8' : 'h-[25px] w-[100px] ml-3'}`}
 					>
@@ -100,3 +112,5 @@
 </div>
 
 <Login show={showLogin} on:close={handleClose}/>
+
+<AddProperty showAddProperty={showAddProperty} on:close={handleCloseAddProperty}/>

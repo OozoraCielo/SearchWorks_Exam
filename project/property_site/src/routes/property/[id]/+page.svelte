@@ -16,7 +16,7 @@
 
 	//getting data from firebase
 	import { onMount } from 'svelte';
-	import {property, properties, getProperty, getAllProperties, loading} from '../../../store/store';
+	import {property, properties, getProperty, getAllProperties, loading, getAllPropertiesExceptSelected} from '../../../store/store';
 
 	
 
@@ -27,7 +27,7 @@
 		const url_string = window.location.href.split('/');
 	const url_ID = url_string[url_string.length - 1];
 	console.log(url_ID);
-		getAllProperties();
+		getAllPropertiesExceptSelected(url_ID);
 		getProperty(url_ID);
 	});
 		// getAllProperties();
@@ -77,12 +77,12 @@
 	</div>
 	<div class="w-[100%] pt-[100px] pb-[100px] bg-gray-100">
 		<div class={`w-[70%] flex mx-auto ${innerWidth > 1100 ? '' : 'flex-col'}`}>
-			<div class={` flex flex-col flex-wrap ${innerWidth > 1100 ? 'w-[65%]' : 'w-[100%]'}`}>
+			<div class={` flex flex-col flex-wrap ${innerWidth > 1100 ? 'w-[70%]' : 'w-[100%]'}`}>
 				<!--big pic-->
 				<img
 					src={$property.room_pics[0]}
 					alt="room"
-					class="w-[100%] h-[400px] object-cover rounded-tr-[57px]"
+					class="w-[100%] h-[500px] object-cover rounded-tr-[57px]"
 				/>
 				<!--small pics-->
 				<div class="flex flex-wrap">
@@ -206,9 +206,42 @@
 					</div>
 				</div>
 			</div>
+			<!-- view profile -->
 			<div
-				class={` h-[400px] bg-white ml-auto rounded-2xl shadow-lg ${innerWidth > 1100 ? 'w-[30%]' : 'w-[100%] mt-[50px]'}`}
-			></div>
+				class={` h-[500px] bg-white ml-auto rounded-2xl shadow-lg flex flex-col p-4 ${innerWidth > 1100 ? 'w-[25%]' : 'w-[100%] mt-[50px]'}`}
+			>
+			<div class="h-[60px] w-[100%] mx-auto rounded-lg bg-gray-200 flex items-center">
+
+					<img src="/profile_pic.jpg" alt="profile pic" class="rounded-full h-[35px] w-[35px] ml-3">
+					<div class="flex flex-col ml-2">
+						<p class="font-dmsans text-black text-[15px]">Firstname Lastname</p>
+						<a href="/#" class="font-dmsans text-yellow-500 text-[13px] hover:brightness-75 mr-auto">View Profile</a>
+					</div>
+
+			</div>
+			<input type="text" class="h-[60px] w-[100%] mt-4 mx-auto rounded-lg bg-white border-gray-200 border-[1px] flex items-center p-3" placeholder="Name">
+			<input type="text" class="h-[60px] w-[100%] mt-2 mx-auto rounded-lg bg-white border-gray-200 border-[1px] flex items-center p-3" placeholder="Phone">
+			<input type="text" class="h-[60px] w-[100%] mt-2 mx-auto rounded-lg bg-white border-gray-200 border-[1px] flex items-center p-3" placeholder="Email">
+			<textarea class="h-[100px] w-[100%] mt-2 mx-auto rounded-lg bg-white border-gray-200 border-[1px] flex p-3" placeholder="Hello, I am interested in..."></textarea>
+			<div class={`h-[70px] w-[100%]`}>
+				<a href="/" class="hover:opacity-80">
+					<div
+						class={`mt-3 bg-black rounded-tr-[20px] flex items-center justify-center h-[70px] w-[100%]`}
+					>
+						<h1
+							class={`text-white  font-dmsans text-[17px]`}
+						>
+							Learn more
+						</h1>
+						<h1
+							class={`font-dmsans text-yellow-500 text-[30px] ml-2 mb-1`}
+						>
+							&rarr;
+						</h1>
+					</div>
+				</a>
+			</div>
+		</div>
 		</div>
 
 		<!--similar listings-->
@@ -222,7 +255,7 @@
 					<a href={`/property/${property.id}`} class="hover:brightness-75 mr-8" on:click={() => {
 						loading.set(true);
 						getProperty(property.id);
-						getAllProperties();
+						getAllPropertiesExceptSelected(property.id);
 					}}>
 						<div
 							class={` bg-white rounded-2xl mt-6 ${innerWidth > 1100 ? 'w-[330px] h-[375px]' : 'w-[250px] h-[375px]'}`}
@@ -282,4 +315,11 @@
 	.auto-grid {
 		grid-template-columns: repeat(auto-fit, minmax(min-content, 200px));
 	}
+	::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
+}
+textarea {
+  resize: none;
+}
 </style>
