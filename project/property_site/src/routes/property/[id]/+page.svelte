@@ -27,7 +27,6 @@
 		loading.set(true);
 		const url_string = window.location.href.split('/');
 		const url_ID = url_string[url_string.length - 1];
-		console.log(url_ID);
 		getAllPropertiesExceptSelected(url_ID);
 		getProperty(url_ID);
 	});

@@ -14,8 +14,8 @@
 	import Saos from 'saos';
 
 	//get screen size
-	$: innerWidth = 1000;
-	$: innerHeight = 1000;
+	$: innerWidth = 1100;
+	$: innerHeight = 1100;
 
 	//filter options
 	const locationItems = ['All Locations', 'Pampanga', 'Bulacan', 'Manila', 'Quezon', 'Cebu'];
@@ -257,7 +257,6 @@
 				class={`mx-4 w-[30px] h-[30px] ${innerWidth > 1100 ? 'text-[17px]' : 'text-[10px]'}`}
 				on:change={() => {
 					showAll = !showAll;
-					console.log(showAll);
 					getAllPropertiesFiltered(searchFilter, locationFilter, typeFilter, priceFilter, showAll);
 				}}
 			/>
